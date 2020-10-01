@@ -1,0 +1,30 @@
+version: '3'
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: nomad_auto_garage_local_django
+    volumes:
+      - .:/app
+    env_file:
+      - ./.envs/.local/.django
+    ports:
+#      - locally:container
+      - "8888:8000"
+    command: /start
+    networks:
+      masternet:
+        aliases:
+          - garage
+      db:
+      cache:
+      app:
+#      - elastic
+
+networks:
+  masternet:
+    external: true
+  app: {}
+  db: {}
+  cache: {}

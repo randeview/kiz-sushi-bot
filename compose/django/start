@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+find . -type f -name "*.py[co]" -delete
+find . -type d -name "__pycache__" -delete
+
+rm -rf ./*/__pycache__
+
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000 --settings=config.settings
+
+
+#sudo rm -rf ./*/__pycache__
