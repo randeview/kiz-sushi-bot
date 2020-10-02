@@ -44,7 +44,8 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
 ]
 LOCAL_APPS = [
-    "kiz_sushi_bot.main.apps.MainConfig"
+    "kiz_sushi_bot.main.apps.MainConfig",
+    "kiz_sushi_bot.bot.apps.BotConfig"
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -112,7 +113,7 @@ SWAGGER_SETTINGS = {
         }
     }
 }
-
+BOT_TOKEN = env("API_BOT")
 from .base import *  # noqa
 
 DEBUG = True

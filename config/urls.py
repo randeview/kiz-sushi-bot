@@ -8,7 +8,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.urls import include, path
 api_url_patterns = [
-    path("bot/", include("kiz_sushi_bot.main.urls", namespace="bot")),
+    path("fastfood/", include("kiz_sushi_bot.main.urls", namespace="fastfood")),
+    path("bot/", include("kiz_sushi_bot.bot.urls", namespace="bot")),
 ]
 
 schema_view = get_schema_view(
