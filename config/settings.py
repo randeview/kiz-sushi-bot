@@ -18,12 +18,12 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 from pathlib import Path
-
-BASE_DIR = str(Path(__file__).resolve(strict=True).parent.parent)
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }}
 
 ROOT_URLCONF = "config.urls"
@@ -62,45 +62,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'nomad_auto_garage.microservices.authorization.CapsTokenAuthentication',
-        'nomad_auto_garage.microservices.authorization.CapsPlainTokenAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ],
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    "DATE_INPUT_FORMATS": [
-        '%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y',  # '2006-10-25', '10/25/2006', '10/25/06'
-        '%b %d %Y', '%b %d, %Y',  # 'Oct 25 2006', 'Oct 25, 2006'
-        '%d %b %Y', '%d %b, %Y',  # '25 Oct 2006', '25 Oct, 2006'
-        '%B %d %Y', '%B %d, %Y',  # 'October 25 2006', 'October 25, 2006'
-        '%d %B %Y', '%d %B, %Y',  # '25 October 2006', '25 October, 2006'
-        '%d.%m.%Y', '%d-%m-%Y',  # dd.mm.yyyy
-    ],
-    'DATETIME_INPUT_FORMATS': [
-        '%Y-%m-%d %H:%M:%S',  # '2006-10-25 14:30:59'
-        '%Y-%m-%d %H:%M:%S.%f',  # '2006-10-25 14:30:59.000200'
-        '%Y-%m-%d %H:%M',  # '2006-10-25 14:30'
-        '%Y-%m-%d',  # '2006-10-25'
-        '%m/%d/%Y %H:%M:%S',  # '10/25/2006 14:30:59'
-        '%m/%d/%Y %H:%M:%S.%f',  # '10/25/2006 14:30:59.000200'
-        '%m/%d/%Y %H:%M',  # '10/25/2006 14:30'
-        '%m/%d/%Y',  # '10/25/2006'
-        '%m/%d/%y %H:%M:%S',  # '10/25/06 14:30:59'
-        '%m/%d/%y %H:%M:%S.%f',  # '10/25/06 14:30:59.000200'
-        '%m/%d/%y %H:%M',  # '10/25/06 14:30'
-        '%m/%d/%y',  # '10/25/06'
-        '%d.%m.%Y',  # dd.mm.yyyy
-        'iso-8601',  # 2013-01-29T12:34:56.000000Z
-    ],
-    'PAGE_SIZE': 20
+
 }
 
 STATIC_ROOT = str(ROOT_DIR("staticfiles"))
