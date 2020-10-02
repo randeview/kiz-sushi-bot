@@ -1,15 +1,14 @@
 from django.conf import settings
 from django.conf.urls import url
-from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-
+from django.urls import include, path
 api_url_patterns = [
-
+    path("bot/", include("kiz_sushi_bot.main.urls", namespace="bot")),
 ]
 
 schema_view = get_schema_view(

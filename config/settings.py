@@ -19,6 +19,7 @@ USE_L10N = True
 USE_TZ = False
 from pathlib import Path
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATABASES = {
     'default': {
@@ -43,7 +44,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
 ]
 LOCAL_APPS = [
-    # Your stuff: custom apps go here
+    "kiz_sushi_bot.main.apps.MainConfig"
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

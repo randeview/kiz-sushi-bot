@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    image: nomad_auto_garage_local_django
+    image: kiz_sushi_bot
     volumes:
       - .:/app
     env_file:
@@ -16,7 +16,7 @@ services:
     networks:
       masternet:
         aliases:
-          - garage
+          - bot
       db:
       cache:
       app:
