@@ -15,5 +15,6 @@ class FastFood(models.Model):
     )
     title = models.CharField("Название продукта", max_length=300)
     price = models.IntegerField("Цена", default=0)
-    avatar = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     type = models.IntegerField(choices=fastfood_types)
+    consist = models.CharField(max_length=300, null=True, blank=True)
