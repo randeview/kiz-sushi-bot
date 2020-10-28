@@ -12,6 +12,10 @@ class TelegramUser(models.Model):
     def __str__(self):
         return self.username
 
+    class Meta:
+        verbose_name = "Клиент"
+        verbose_name_plural = "Клиенты"
+
 
 class Chat(models.Model):
     chat_id = models.IntegerField()
@@ -19,6 +23,10 @@ class Chat(models.Model):
 
     def __str__(self):
         return f"{self.chat_user, self.chat_id}"
+
+    class Meta:
+        verbose_name = "Чаты"
+        verbose_name_plural = "Чаты"
 
 
 class Message(models.Model):
@@ -28,9 +36,9 @@ class Message(models.Model):
     date = models.DateTimeField(auto_now=True)
     text = models.CharField(max_length=300, null=True, blank=True)
 
-    @property
-    def message_data(self):
-        return "".join(list([self.from_user.username, str(self.chat_with.chat_id), str(self.date), self.text]))
-
     def __str__(self):
-        return self.message_data
+        return self.text
+
+    class Meta:
+        verbose_name = "Сообщение"
+        verbose_name_plural = "Сообщения"

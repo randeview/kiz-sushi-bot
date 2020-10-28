@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class BotConfig(AppConfig):
-    name = 'bot'
+    name = 'kiz_sushi_bot.bot'

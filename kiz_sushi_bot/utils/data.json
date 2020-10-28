@@ -1,0 +1,21 @@
+{
+  "update_id": 222340743,
+  "message": {
+    "message_id": 50,
+    "from": {
+      "id": 411067794,
+      "is_bot": false,
+      "first_name": "Nurlan",
+      "username": "tunuke",
+      "language_code": "ru"
+    },
+    "chat": {
+      "id": 411067794,
+      "first_name": "Nurlan",
+      "username": "tunuke",
+      "type": "private"
+    },
+    "date": 1603818854,
+    "text": "a"
+  }
+}
