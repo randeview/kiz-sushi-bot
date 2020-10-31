@@ -19,7 +19,7 @@ class TelegramUser(models.Model):
 
 class Chat(models.Model):
     chat_id = models.IntegerField()
-    chat_user = models.ForeignKey(TelegramUser, null=True, blank=True, on_delete=models.CASCADE)
+    chat_user = models.ForeignKey(TelegramUser, null=True, blank=True, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"{self.chat_user, self.chat_id}"
@@ -31,8 +31,8 @@ class Chat(models.Model):
 
 class Message(models.Model):
     message_id = models.IntegerField()
-    from_user = models.ForeignKey(TelegramUser, null=True, blank=True, on_delete=models.CASCADE)
-    chat_with = models.ForeignKey(Chat, null=True, blank=True, on_delete=models.CASCADE)
+    from_user = models.ForeignKey(TelegramUser, null=True, blank=True, on_delete=models.PROTECT)
+    chat_with = models.ForeignKey(Chat, null=True, blank=True, on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now=True)
     text = models.CharField(max_length=300, null=True, blank=True)
 
