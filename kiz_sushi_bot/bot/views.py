@@ -1,13 +1,11 @@
 import json
-
-import requests
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.conf import settings
-
+import telegram
 from .models import Chat, Message
 from .serializers import TelegramUserSerializer, ChatSerializer
+
+bot = telegram.Bot(token='1240576397:AAH-iQqaDhxy3I6BarVbuW3FHoa8emlBQTM')
 
 
 class TestView(APIView):
@@ -30,7 +28,11 @@ class BotWebHookView(APIView):
         message_id = data['message']['message_id']
         message = Message(message_id=message_id, from_user=user, text=text, chat_with=chat)
         message.save()
-        response = requests.get(
-            f'https://api.telegram.org/bot{settings.BOT_TOKEN}/sendMessage?chat_id={chat_id}&text={text}'.format(
-                chat_id, text))
+        location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
+        contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
+        custom_keyboard = [[location_keyboard, contact_keyboard]]
+        reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+        print(chat_id)
+        bot.send_message(chat_id=chat_id, text="Would you mind sharing your location and contact with me?",
+                         reply_markup=reply_markup)
         return Response({'message': 'ok'})
