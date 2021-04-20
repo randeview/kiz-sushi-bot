@@ -101,7 +101,7 @@ TEMPLATES = [
 ]
 FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
 EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
+    "DJANGO_EMAIL_BACKEND", default="django.handlers.mail.backends.smtp.EmailBackend"
 )
 ADMIN_URL = "admin/"
 SWAGGER_SETTINGS = {
@@ -113,8 +113,7 @@ SWAGGER_SETTINGS = {
         }
     }
 }
-BOT_TOKEN = env("API_BOT")
-from .base import *  # noqa
+BOT_TOKEN = "1240576397:AAH-iQqaDhxy3I6BarVbuW3FHoa8emlBQTM"
 
 DEBUG = True
 SECRET_KEY = env(
@@ -126,7 +125,7 @@ ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "SELF_SERVICE_NAME", "*"]
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "BACKEND": "django.handlers.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
     }
 }
@@ -146,3 +145,5 @@ INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
 #     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 #     INTERNAL_IPS += [ip[:-1] + "1" for ip in ips]
 INSTALLED_APPS += ["django_extensions"]  # noqa F405
+
+DOMAIN_NAME = 'https://94da52212db8.ngrok.io'

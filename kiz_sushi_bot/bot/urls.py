@@ -1,8 +1,7 @@
 from django.urls import path
-from kiz_sushi_bot.bot.views import BotWebHookView, TestView
+from . import views
 
 app_name = "bot"
 urlpatterns = [
-    path('webhook/', BotWebHookView.as_view()),
-    path('test/', TestView.as_view())
+    path('client/<str:token>/', views.ClientBotWebHookView.as_view(), name='client')
 ]

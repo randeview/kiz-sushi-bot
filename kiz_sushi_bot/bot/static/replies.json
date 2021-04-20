@@ -1,0 +1,126 @@
+[
+  {
+      "code": "accept_button",
+      "message": "Принять"
+  },
+  {
+      "code": "reject_button",
+      "message": "Отказаться"
+  },
+  {
+      "code": "share_phone_button",
+      "message": "Поделиться номером телефона"
+  },
+  {
+      "code": "offer_accepted_reply",
+      "message": "Вы приняли оффер. Менеджеры банка свяжутся с вами."
+  },
+  {
+      "code": "offer_rejected_reply",
+      "message": "Вы отказались от оффера. Пожалуйста, ожидайте новые офферы."
+  },
+  {
+      "code": "welcome_reply",
+      "message": "Добро пожаловать.\n\nДля того, чтобы воспользоваться всеми функциями бота, пожалуйста, авторизуйтесь"
+  },
+  {
+      "code": "phone_prompt_reply",
+      "message": "Пожалуйста, воспользуйтесь кнопкой ниже [Поделиться номером телефона] или введите свой номер в международном формате без пробелов (+77073332211)"
+  },
+  {
+      "code": "successful_auth_reply",
+      "message": "Успешно авторизованы. Ожидайте Офферы"
+  },
+  {
+      "code": "sms_code_prompt_reply",
+      "message": "Для авторизации введите код из СМС."
+  },
+  {
+      "code": "inn_prompt_reply",
+      "message": "Пожалуйста, введите Ваш ИНН"
+  },
+  {
+      "code": "invalid_sms_code_reply",
+      "message": "Вы ввели не правильный код. Попробуйте повторно ввести код."
+  },
+  {
+      "code": "invalid_inn_reply",
+      "message": "Пожалуйста, введите ИНН в правильном формате"
+  },
+  {
+      "code": "partner_not_found_reply",
+      "message": "Пользователь с таким ИНН не существует. Пожалуйста, свяжитесь с контроллером."
+  },
+  {
+      "code": "my_offers_button",
+      "message": "Мои офферы"
+  },
+  {
+      "code": "my_profile_button",
+      "message": "Мои данные"
+  },
+  {
+      "code": "my_contracts_button",
+      "message": "Мои котракты"
+  },
+  {
+      "code": "news_button",
+      "message": "Новости"
+  },
+  {
+      "code": "news_received_reply",
+      "message": "Новое уведомление: "
+  },
+  {
+      "code": "undefined_cmd_msg",
+      "message": "Я вас не понимаю. Прошу попробовать ввести команду /start и попробовать снова."
+  },
+  {
+      "code": "no_news_reply",
+      "message": "У вас нет новостей."
+  },
+  {
+      "code": "no_offers_reply",
+      "message": "У вас нет офферов."
+  },
+  {
+      "code": "no_contracts_reply",
+      "message": "У вас нет контрактов."
+  },
+  {
+      "code": "payments_button",
+      "message": "Платежи"
+  },
+  {
+      "code": "back_button",
+      "message": "Назад"
+  },
+  {
+      "code": "payments_insurance_button",
+      "message": "Страхование"
+  },
+  {
+      "code": "payments_rent_button",
+      "message": "Аренда"
+  },
+  {
+      "code": "payments_water_button",
+      "message": "Вода"
+  },
+  {
+      "code": "payments_electricity_button",
+      "message": "Электроэнергия"
+  },
+  {
+      "code": "payments_security_button",
+      "message": "Охрана"
+  },
+  {
+      "code": "payments_page_retry",
+      "message": "Пожалуйста, выберите тип платежа: "
+  },
+  {
+      "code": "no_payments_reply",
+      "message": "У вас нет платежей данного типа"
+  }
+]
