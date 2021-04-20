@@ -10,7 +10,7 @@ media/*
 *.sql
 # C extensions
 *.so
-
+env
 # Distribution / packaging
 .Python
 build/
