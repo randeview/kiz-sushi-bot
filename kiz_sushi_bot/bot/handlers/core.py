@@ -13,19 +13,19 @@ class CoreHandler:
        Handler for bot configs and core methods like start, stop, authorize
        """
     # Core states
-    AUTH_STATE, AUTH_SMS_STATE, AUTH_INN_STATE, MAIN_MENU_STATE = range(100, 104)
-    # Profile states
-    PROFILE_STATE = 200
-    # News states
-    NEWS_STATE = 300
-    # Offers states
-    OFFERS_STATE = 400
-    # Contracts states
-    CONTRACTS_STATE = 500
+    BASE_STATE, MENU_STATE, BASKET_STATE, ORDER_HISTORY_STATE, MANAGER_STATE = range(100, 105)
 
     def get_core_handlers(self):
         return [
             CommandHandler('start', self.start),
+        ]
+
+    def get_base_handlers(self):
+        return [
+            MessageHandler(
+                Filters.regex(
+                    f'^({self.reply_manager.get_message("menu_button")})$'
+                ), self.menu_page)
         ]
 
     def get_auth_handlers(self):
@@ -37,10 +37,10 @@ class CoreHandler:
     @core_handlers_decorator
     def get_main_menu_handlers(self):
         return [
-            # MessageHandler(
-            #     Filters.regex(
-            #         f'^({self.reply_manager.get_message("my_profile_button")})$'
-            #     ), self.profile_page),
+            MessageHandler(
+                Filters.regex(
+                    f'^({self.reply_manager.get_message("menu_button")})$'
+                ), self.menu_page),
             # MessageHandler(
             #     Filters.regex(
             #         f'^({self.reply_manager.get_message("my_offers_button")})$'
@@ -66,20 +66,25 @@ class CoreHandler:
             self.render_main_page(update, context)
             return self.MAIN_MENU_STATE
         user = update.message.from_user
+        user_data = {
+            'user_id': user.id,
+            'first_name': user.first_name,
+            'is_bot': user.is_bot,
+            'username': user.username,
+            'chat_id': update.message.chat.id
+        }
+        client = TelegramClient(**user_data)
+        client.save()
         msg = update.message.reply_text(
             text=self.reply_manager.get_message('welcome_reply'),
             parse_mode='HTML',
             reply_markup=ReplyKeyboardRemove())
-        msg = update.message.reply_text(
-            text=self.reply_manager.get_message('phone_prompt_reply'),
-            parse_mode='HTML',
-            reply_markup=markups.start_markup())
-        return self.AUTH_STATE
+        return self.BASE_STATE
 
     def render_main_page(self, update, context):
         # self.clear_messages(context, update.message.chat.id, all=True)
         msg = update.message.reply_text(
-            self.reply_manager.get_message('successful_auth_reply'),
+            self.reply_manager.get_message('get_base_text'),
             parse_mode='HTML',
             reply_markup=markups.main_menu_markup())
 

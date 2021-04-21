@@ -146,4 +146,4 @@ INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
 #     INTERNAL_IPS += [ip[:-1] + "1" for ip in ips]
 INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
-DOMAIN_NAME = 'https://94da52212db8.ngrok.io'
+DOMAIN_NAME = 'https://1e6e5352bc48.ngrok.io'

@@ -10,6 +10,7 @@ class ClientBotWebHookView(views.APIView):
 
     def post(self, request, *args, **kwargs):
         token = kwargs.get("token")
+        print(request.data)
         updater = BotUpdater(token=token)
         update = Update.de_json(request.data, updater.bot)
         updater.dispatcher.process_update(update)

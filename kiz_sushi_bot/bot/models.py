@@ -35,4 +35,5 @@ class TelegramReplyTemplate(models.Model):
     @classmethod
     def get_message(cls, code):
         reply = cls.objects.filter(code=code).first()
+        print(code)
         return reply.message if reply else 'Ошибка шаблона.'
