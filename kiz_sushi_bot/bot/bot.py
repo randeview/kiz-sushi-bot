@@ -8,7 +8,7 @@ from .handlers import *
 from .models import TelegramReplyTemplate
 
 
-class BotUpdater(CoreHandler, MenuHandler, HelpersHandler, Updater):
+class BotUpdater(CoreHandler, MenuHandler, Updater):
     def __init__(self, token, *args, **kwargs):
         persistence_file = os.path.join(settings.MEDIA_ROOT, 'persistence_files/{}'.format(token))
         persistence = PicklePersistence(filename=persistence_file)
@@ -20,7 +20,6 @@ class BotUpdater(CoreHandler, MenuHandler, HelpersHandler, Updater):
         conv_handler = ConversationHandler(
             entry_points=[CommandHandler('start', self.start)],
             states={
-                self.BASE_STATE: self.get_base_handlers(),
                 self.MENU_STATE: self.get_main_menu_handlers(),
             },
             fallbacks=[

@@ -13,5 +13,5 @@ class Command(BaseCommand):
         token = settings.BOT_TOKEN
         updater = BotUpdater(token=token)
         bot = updater.bot
-        url = f"{settings.DOMAIN_NAME}/api/webhook/client/{token}/"
+        url = f"https://1225-198-45-117-196.ngrok.io/api/webhook/client/{token}/"
         bot.set_webhook(url)

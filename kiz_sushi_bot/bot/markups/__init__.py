@@ -10,24 +10,29 @@ basket_emoji = u'\U00002b55'
 thunderstorm = u'\U00002744'
 
 
-def start_markup() -> ReplyKeyboardMarkup:
-    keyboard = [
-        [KeyboardButton(reply_manager.get_message('share_phone_button'), request_contact=True)]
-    ]
-    markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
-    return markup
-
-
 def main_menu_markup() -> ReplyKeyboardMarkup:
     keyboard = [
         [
-            KeyboardButton(reply_manager.get_message('menu_button')),
-            KeyboardButton(reply_manager.get_message('basket_button') + basket_emoji),
+            KeyboardButton('Меню'),
         ],
         [
-            KeyboardButton(reply_manager.get_message('about_us_button') + about_us),
-            KeyboardButton(reply_manager.get_message('my_order_button') + thunderstorm),
+            KeyboardButton('Про нас!'),
         ]
     ]
     markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     return markup
+
+
+def food_menu_markups() -> ReplyKeyboardMarkup:
+    keyboard = [
+        [
+            KeyboardButton('Суши'),
+        ],
+        [
+            KeyboardButton('Пицца'),
+        ],
+        [
+            KeyboardButton('Напитки'),
+        ]
+    ]
+    return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
