@@ -2,6 +2,7 @@ from telegram import (
     ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup)
 
 from kiz_sushi_bot.bot.models import TelegramReplyTemplate
+from kiz_sushi_bot.main.models import FoodType
 
 reply_manager = TelegramReplyTemplate
 menu_emoji = u'\U00002712'
@@ -24,15 +25,7 @@ def main_menu_markup() -> ReplyKeyboardMarkup:
 
 
 def food_menu_markups() -> ReplyKeyboardMarkup:
-    keyboard = [
-        [
-            KeyboardButton('Суши'),
-        ],
-        [
-            KeyboardButton('Пицца'),
-        ],
-        [
-            KeyboardButton('Напитки'),
-        ]
-    ]
+    keyboard = []
+    for category in FoodType.objects.all():
+        keyboard.append([KeyboardButton(category.title + u'\U0001F464')])
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)

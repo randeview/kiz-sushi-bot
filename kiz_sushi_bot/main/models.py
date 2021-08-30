@@ -19,7 +19,7 @@ class FoodType(models.Model):
 
     class Meta:
         verbose_name = 'Категория'
-        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.title
@@ -34,7 +34,7 @@ class FastFood(TimestampMixin):
 
     class Meta:
         verbose_name = 'Еда'
-        verbose_name = 'Еда'
+        verbose_name_plural = 'Блюда'
 
     def __str__(self):
         return self.title

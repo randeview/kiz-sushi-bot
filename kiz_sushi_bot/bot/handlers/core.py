@@ -22,6 +22,10 @@ class CoreHandler:
                 Filters.regex(
                     '^Меню$'
                 ), self.get_menu_page),
+            MessageHandler(
+                Filters.regex(
+                    '^Про нас!$'
+                ), self.get_about_info),
         ]
 
     @core_page_message_handler
@@ -54,3 +58,10 @@ class CoreHandler:
         update.message.reply_text(
             'Я вас не понимаю. Попробуйте ввести команда /start',
             parse_mode='HTML', )
+
+    def get_about_info(self, update, context):
+        update.message.reply_text(
+            "``` Ресторан по заказу еду  SUSHI 🔥KIZ 🔥PIZZA в КИЗе. "
+            "Находимся по адресу ЕРЛЕПЕСОВА БАБАЕВА. "
+            "Принимаем заказы с10:00 до 23:00(ежедневно).Номер телефона: +7471166232```",
+            parse_mode='Markdown')
