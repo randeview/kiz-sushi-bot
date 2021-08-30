@@ -49,6 +49,7 @@ class CoreHandler:
                                   parse_mode='HTML',
                                   reply_markup=markups.main_menu_markup())
 
+    @simple_message_handler
     def undefined_cmd_msg(self, update, context):
         update.message.reply_text(
             'Я вас не понимаю. Попробуйте ввести команда /start',

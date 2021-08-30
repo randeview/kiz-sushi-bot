@@ -70,8 +70,8 @@ REST_FRAMEWORK = {
 
 STATIC_ROOT = str(ROOT_DIR("staticfiles"))
 STATIC_URL = "/static/"
-MEDIA_ROOT = str(ROOT_DIR("media"))
-MEDIA_URL = "/media/"
+MEDIA_URL = os.getenv("MEDIA_URL", "/api/media/")
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", os.path.join(BASE_DIR, "media"))
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
