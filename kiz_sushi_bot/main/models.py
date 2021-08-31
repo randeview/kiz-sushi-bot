@@ -15,7 +15,7 @@ class TimestampMixin(models.Model):
 
 class FoodType(models.Model):
     title = models.CharField('Название категории', max_length=255)
-    emoji = models.CharField('Эмоджи', max_length=100)
+    emoji = models.CharField('Эмоджи', max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Категория'

@@ -26,6 +26,11 @@ def main_menu_markup() -> ReplyKeyboardMarkup:
 
 def food_menu_markups() -> ReplyKeyboardMarkup:
     keyboard = []
-    for category in FoodType.objects.all():
-        keyboard.append([KeyboardButton(category.title + u'\U0001F464')])
+    temporary_list = []
+    for index, category in enumerate(FoodType.objects.all()):
+        temporary_list.append(KeyboardButton(category.title))
+        if index % 2 == 0:
+            keyboard.append(temporary_list)
+            temporary_list = []
+    keyboard.append([KeyboardButton('Назад')])
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)

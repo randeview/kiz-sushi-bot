@@ -21,6 +21,7 @@ class BotUpdater(CoreHandler, MenuHandler, Updater):
             entry_points=[CommandHandler('start', self.start)],
             states={
                 self.MENU_STATE: self.get_main_menu_handlers(),
+                self.FOOD_MENU: self.get_food_menu_handlers(),
             },
             fallbacks=[
                 CommandHandler('start', self.start)],
